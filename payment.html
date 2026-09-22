@@ -1,0 +1,115 @@
+
+<link rel="stylesheet" href="payment.css">
+<body>
+    
+<section class="payment-section">
+
+    <div class="payment-container">
+
+        <h2>Payment Method</h2>
+
+        <p class="payment-text">
+            Choose your preferred payment method.
+        </p>
+
+        <form>
+
+            <div class="payment-option">
+
+                <input type="radio" name="payment" id="card" checked>
+
+                <label for="card">
+                    💳 Debit / Credit Card
+                </label>
+
+            </div>
+
+            <div class="payment-option">
+
+                <input type="radio" name="payment" id="paystack">
+
+                <label for="paystack">
+                    🟢 Paystack
+                </label>
+
+            </div>
+
+            <div class="payment-option">
+
+                <input type="radio" name="payment" id="flutterwave">
+
+                <label for="flutterwave">
+                    🟠 Flutterwave
+                </label>
+
+            </div>
+
+            <div class="payment-option">
+
+                <input type="radio" name="payment" id="transfer">
+
+                <label for="transfer">
+                    🏦 Bank Transfer
+                </label>
+
+            </div>
+
+            <hr>
+
+            <h3>Card Details</h3>
+
+            <div class="card-group">
+
+                <label>Card Holder Name</label>
+
+                <input
+                    type="text"
+                    placeholder="John Doe">
+
+            </div>
+
+            <div class="card-group">
+
+                <label>Card Number</label>
+
+                <input
+                    type="text"
+                    placeholder="1234 5678 9012 3456">
+
+            </div>
+
+            <div class="card-row">
+
+                <div>
+
+                    <label>Expiry Date</label>
+
+                    <input
+                        type="text"
+                        placeholder="MM/YY">
+
+                </div>
+
+                <div>
+
+                    <label>CVV</label>
+
+                    <input
+                        type="password"
+                        maxlength="3"
+                        placeholder="123">
+
+                </div>
+
+            </div>
+
+            <button class="pay-btn">
+                Pay ₦93,000
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+</body>

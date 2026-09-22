@@ -1,0 +1,130 @@
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* NAVIGATION */
+
+.navbar{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px 60px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(12px);
+
+    position:fixed;
+
+    width:100%;
+
+    top:0;
+
+    left:0;
+
+    z-index:1000;
+}
+
+/* LOGO */
+
+.logo h2{
+
+    color:gold;
+
+    font-size:32px;
+
+    cursor:pointer;
+}
+
+/* MENU */
+
+.nav-links{
+
+    display:flex;
+
+    list-style:none;
+
+    gap:35px;
+}
+
+.nav-links a{
+
+    text-decoration:none;
+
+    color:gold;
+
+    font-size:18px;
+
+    transition:.3s;
+}
+.nav-box{
+    padding: 25px;
+    border-radius:bold red 20px ;
+}
+
+.nav-links a:hover{
+
+    color:gold;
+}
+
+/* RIGHT SIDE */
+
+.nav-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+}
+
+/* SEARCH */
+
+.search-box input{
+
+    width:220px;
+
+    padding:10px 15px;
+
+    border:none;
+
+    border-radius:25px;
+
+    outline:none;
+}
+
+/* BUTTON */
+
+.login-btn{
+
+    background:gold;
+
+    color:black;
+
+    border:none;
+
+    padding:10px 25px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.login-btn:hover{
+
+    background:white;
+}

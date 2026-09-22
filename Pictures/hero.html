@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<link rel="stylesheet" href="hero.css">
+<section class="hero">
+
+    <div class="hero-overlay">
+
+        <h1>Find Your Perfect Stay</h1>
+
+        <p>
+            Discover luxury hotels, apartments and resorts across Nigeria and beyond.
+        </p>
+
+        <div class="booking-search">
+
+            <div class="search-item">
+                <label>Destination</label>
+                <input type="text" placeholder="Where are you going?">
+            </div>
+
+            <div class="search-item">
+                <label>Check-in</label>
+                <input type="date">
+            </div>
+
+            <div class="search-item">
+                <label>Check-out</label>
+                <input type="date">
+            </div>
+
+            <div class="search-item guest-selector">
+                <label>Guests</label>
+
+                <button type="button" id="guestButton">
+                    1 Guest . 1 Room
+                </button>
+                <div class="guest-menu" id="guestmenu">
+                    <div class="guest-row">
+                        <div>
+                            <strong>Adults</strong>
+                            <small>Ages 13+</small>
+                        </div>
+
+                        <div class="counter">
+                            <button type="button" class="minus" data-type="adults">
+                                -
+                            </button>
+
+                            <span id="adultsCount">1</span>
+                            <button type="button" class="plus" data-type="adults">
+                                +
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="guest-row">
+                        <div>
+                            <strong>Children</strong>
+                            <small>Ages 2-12</small>
+                        </div>
+                        <div class="counter">
+                            <button type="button" class="minus" data-type="children">
+                                -
+                            </button>
+                            <span id="chlidrenCount">0</span>
+                            <button type="button" class="plus" data-type="children">
+                                +
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <div class="guest-row">
+<div>
+    <strong>Rooms</strong>
+    <small>Number of rooms</small>
+</div>                
+
+<div class="counter">
+
+    <button type="button" class="minus" data-type="rooms">
+        -
+    </button>
+    <span id="roomsCount">1</span>
+    <button type="button" class="plus" data-type="rooms">
+        +
+    </button>
+</div>
+    
+</div>
+                             <button type="button" id="guestDone">Done</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <button class="search-btn">
+                Search Hotels
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+<script src="hero.js"></script>
+</body>
