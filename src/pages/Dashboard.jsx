@@ -40,8 +40,7 @@ const MOCK_REVIEWS = [
 const MOCK_NOTIFICATIONS = [
   { id: 1, title: 'Booking confirmed', body: 'SLC-2026-001 for Solace Grand Hotel is confirmed for Jul 15–18.', time: '2h ago', unread: true, icon: '✅' },
   { id: 2, title: 'Payment received', body: '₦540,000 received via bank transfer. Awaiting property confirmation.', time: '1d ago', unread: true, icon: '💳' },
-  { id: 3, title: 'New reward points', body: 'You earned 120 pts from your last stay. Balance: 420 pts.', time: '3d ago', unread: false, icon: '🎁' },
-  { id: 4, title: 'Price drop alert', body: 'Mountain Retreat in Obudu dropped 15% for your dates.', time: '5d ago', unread: false, icon: '📉' },
+  { id: 3, title: 'Price drop alert', body: 'Mountain Retreat in Obudu dropped 15% for your dates.', time: '5d ago', unread: false, icon: '📉' },
 ]
 
 function statusBadge(status) {
@@ -130,10 +129,7 @@ function Dashboard() {
     try {
       const ids = JSON.parse(localStorage.getItem('solace_favorites') || '[]')
       if (ids.length) return stays.filter((s) => ids.includes(s.id))
-      return [
-        { ...stays[0], price: stays[0].nairaPrice },
-        { ...stays[1], price: stays[1].nairaPrice },
-      ]
+      return [stays[0], stays[1]]
     } catch {
       return []
     }
@@ -159,15 +155,13 @@ function Dashboard() {
   const stats = [
     { label: 'Total Bookings', value: MOCK_BOOKINGS.length, sub: '+2 this month', icon: '📅', bg: 'bg-blue-50 text-blue-600' },
     { label: 'Favorites', value: favorites.length, sub: `${favorites.length} saved stays`, icon: '❤️', bg: 'bg-primary-50 text-primary-600' },
-    { label: 'Reward Points', value: '420', sub: '≈ ₦8,400 value', icon: '🎁', bg: 'bg-neutral-100 text-neutral-900' },
     { label: 'Wallet Balance', value: formatNaira(25000), sub: 'Available for trips', icon: '👛', bg: 'bg-green-50 text-green-600' },
   ]
 
   const removeFavorite = (id) => {
     setFavorites((f) => {
-      const next = f.filter((x) => (x.id ?? x.title) !== id && x.id !== id)
-      const ids = next.map((x) => x.id).filter(Boolean)
-      localStorage.setItem('solace_favorites', JSON.stringify(ids))
+      const next = f.filter((x) => x.id !== id)
+      localStorage.setItem('solace_favorites', JSON.stringify(next.map((x) => x.id)))
       return next
     })
   }
@@ -179,7 +173,7 @@ function Dashboard() {
         <div className="fixed inset-0 bg-neutral-950/50 backdrop-blur-sm z-40 lg:hidden animate-fade-in" onClick={() => setSidebarOpen(false)} aria-hidden="true" />
       )}
 
-      <aside className={`fixed inset-y-0 left-0 z-50 w-[280px] bg-neutral-950 text-white flex flex-col transition-transform duration-300 ease-out ${sidebarOpen ? 'tranneutral-x-0' : '-tranneutral-x-full'} lg:tranneutral-x-0`} aria-label="Dashboard navigation">
+      <aside className={`fixed inset-y-0 left-0 z-50 w-[280px] bg-neutral-950 text-white flex flex-col transition-transform duration-300 ease-out ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`} aria-label="Dashboard navigation">
         <div className="p-6 pb-4">
           <Link to="/" className="flex items-center gap-2 text-2xl font-semibold tracking-tight">
             <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#FF385C] to-[#E00b41] flex items-center justify-center text-white font-bold">S</span>
@@ -212,13 +206,6 @@ function Dashboard() {
               )
             })}
           </ul>
-
-          <div className="mx-1 mt-6 rounded-3xl bg-gradient-to-br from-primary-500 to-primary-600 p-5 relative overflow-hidden">
-            <div className="absolute -right-6 -top-6 w-28 h-28 bg-white/10 rounded-full" />
-            <p className="font-bold text-white mb-1">Refer & earn</p>
-            <p className="text-sm text-white/80 mb-4">Get ₦5,000 credit for every friend who books.</p>
-            <button className="w-full py-2.5 rounded-full bg-white text-neutral-900 text-sm font-bold hover:bg-neutral-100 transition-colors">Invite friends</button>
-          </div>
         </nav>
 
         <div className="p-4 border-t border-white/10">
@@ -259,7 +246,7 @@ function Dashboard() {
         <main className="flex-1 px-6 py-8 sm:px-10 lg:px-20 max-w-6xl w-full mx-auto">
           {activeTab === 'dashboard' && (
             <div className="space-y-12 animate-fade-in">
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-x-6 gap-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-8">
                 {stats.map((s, i) => (
                   <div key={s.label} className="card p-5 hover-lift animate-slide-up" style={{ animationDelay: `${i * 70}ms`, animationFillMode: 'both' }}>
                     <div className="flex items-start justify-between mb-4">
@@ -321,15 +308,6 @@ function Dashboard() {
                     <p className="font-bold text-neutral-900">{MOCK_BOOKINGS[0].hotel}</p>
                     <p className="text-sm text-neutral-500 mb-4">{formatDate(MOCK_BOOKINGS[0].checkIn)} • {MOCK_BOOKINGS[0].guests} guests</p>
                     <button onClick={() => setSelectedBooking(MOCK_BOOKINGS[0])} className="btn btn-primary w-full py-3 text-sm">View itinerary</button>
-                  </section>
-
-                  <section className="rounded-3xl bg-neutral-950 text-white p-6 relative overflow-hidden">
-                    <div className="absolute -right-10 -top-10 w-40 h-40 bg-primary-500/20 rounded-full blur-2xl" />
-                    <p className="text-sm text-white/70 mb-1">Rewards balance</p>
-                    <p className="text-3xl font-semibold mb-1">420 pts</p>
-                    <div className="h-2 rounded-full bg-white/15 mb-3 overflow-hidden"><div className="h-full w-[42%] rounded-full bg-gradient-to-r from-[#FF385C] to-[#E00b41] transition-all duration-1000" /></div>
-                    <p className="text-xs text-white/70 mb-4">80 pts to unlock Silver tier + 10% off</p>
-                    <button className="w-full py-2.5 rounded-full bg-white text-neutral-950 text-sm font-bold hover:bg-neutral-100 transition-colors">Redeem points</button>
                   </section>
                 </div>
               </div>
@@ -434,7 +412,7 @@ function Dashboard() {
                 ))}
                 <div className="card p-6 border-dashed !border-2 !border-neutral-200 !shadow-none text-center">
                   <p className="font-bold text-neutral-900 mb-1">Stayed somewhere recently?</p>
-                  <p className="text-sm text-neutral-500 mb-4">Share your experience to earn 20 reward points.</p>
+                  <p className="text-sm text-neutral-500 mb-4">Share your experience with other guests.</p>
                   <button className="btn btn-secondary px-6 py-2.5 text-sm">Write a review</button>
                 </div>
               </div>
@@ -516,7 +494,7 @@ function Dashboard() {
                       <p className="text-sm text-neutral-500">{desc}</p>
                     </div>
                     <button role="switch" aria-checked={prefs[key]} aria-label={title} onClick={() => setPrefs((p) => ({ ...p, [key]: !p[key] }))}
-                      className={`w-12 h-7 rounded-full p-1 transition-colors duration-300 flex-shrink-0 ${prefs[key] ? 'bg-primary-500 justify-end' : 'bg-neutral-200 justify-start'}`} style={{ display: 'flex' }}>
+                      className={`w-12 h-7 rounded-full p-1 transition-colors duration-300 flex flex-shrink-0 ${prefs[key] ? 'bg-primary-500 justify-end' : 'bg-neutral-200 justify-start'}`}>
                       <span className="w-5 h-5 rounded-full bg-white shadow transition-all duration-300" />
                     </button>
                   </div>

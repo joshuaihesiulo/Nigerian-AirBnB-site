@@ -153,7 +153,7 @@ function Navbar() {
                   className={`-mb-px flex-none whitespace-nowrap border-b-2 pb-3 pt-4 text-sm ${
                     isActive
                       ? 'border-neutral-900 font-medium text-neutral-900'
-                      : 'border-transparent text-neutral-500 transition-colors hover:border-neutral-300 hover:text-neutral-800 hover:border-b-2'
+                      : 'border-transparent text-neutral-500 transition-colors hover:border-neutral-300 hover:text-neutral-800'
                   }`}
                 >
                   {cat.label}
@@ -173,7 +173,7 @@ function Navbar() {
                   className={`-mb-px flex-none whitespace-nowrap border-b-2 pb-3 pt-4 text-sm ${
                     isActive
                       ? 'border-neutral-900 font-medium text-neutral-900'
-                      : 'border-transparent text-neutral-500 transition-colors hover:border-neutral-300 hover:text-neutral-800 hover:border-b-2'
+                      : 'border-transparent text-neutral-500 transition-colors hover:border-neutral-300 hover:text-neutral-800'
                   }`}
                 >
                   {dest.label}

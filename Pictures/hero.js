@@ -121,18 +121,6 @@ document.getElementById("guestButton");
 const guestMenu =
 document.getElementById("guestMenu");
 
-const adultsCount =
-document. getElementById("adultsCount");
-const childrenCount =
-document. getElementById("childrenCount");
-const roomsCount =
-document. getElementById("roomsCount");
-
-let adults = 1;
-let chidren = 0;
-let rooms = 1;
-
-
 //open / close guest menu
 
 guestButton.addEventListener("click", function(){

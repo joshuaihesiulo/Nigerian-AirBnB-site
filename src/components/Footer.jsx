@@ -13,7 +13,6 @@ function Footer() {
     Community: [
       { label: 'Airbnb.org disaster relief', href: '#' },
       { label: 'Combating discrimination', href: '#' },
-      { label: 'Refer a host', href: '#' },
       { label: 'Community forum', href: '#' },
     ],
     Hosting: [

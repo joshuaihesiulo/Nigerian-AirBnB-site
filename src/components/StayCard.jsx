@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-function StayCard({ stay, onClick, className = '', isFavorite = false, onToggleFavorite }) {
+function StayCard({ stay, onClick, isFavorite = false, onToggleFavorite }) {
   const navigate = useNavigate()
 
   const handleClick = (e) => {
@@ -24,7 +24,7 @@ function StayCard({ stay, onClick, className = '', isFavorite = false, onToggleF
 
   return (
     <article
-      className={`group cursor-pointer ${className}`}
+      className="group cursor-pointer"
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={0}

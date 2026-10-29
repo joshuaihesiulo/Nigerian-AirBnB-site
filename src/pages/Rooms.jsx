@@ -203,7 +203,6 @@ function Rooms() {
                   <StayCard
                     stay={stay}
                     onClick={setSelectedStay}
-                    showQuickBook
                     isFavorite={favorites.has(stay.id)}
                     onToggleFavorite={toggleFavorite}
                   />

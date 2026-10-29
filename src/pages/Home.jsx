@@ -216,7 +216,7 @@ function LocationSection({ location, favorites, onToggleFavorite }) {
         </div>
       </div>
 
-      <div ref={scrollerRef} className="no-scrollbar flex snap-x gap-6 overflow-x-auto scroll-smooth pb-1">
+      <div ref={scrollerRef} className="scrollbar-none flex snap-x gap-6 overflow-x-auto scroll-smooth pb-1">
         {location.stays.map((stay) => (
           <div
             key={stay.id}
